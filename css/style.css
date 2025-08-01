@@ -1,0 +1,360 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "General Sans", sans-serif; /* A nice font similar to the original */
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #f7f7f7;
+}
+
+*::selection {
+  background-color: #000;
+  color: #fff;
+}
+
+/* --- Utilities --- */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+/* --- Custom Cursor --- */
+#cursor {
+  height: 100px;
+  width: 100px;
+  background-color: #ff9800; /* A nice brand color */
+  position: fixed;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  z-index: 100;
+  pointer-events: none; /* Allows clicking through the cursor */
+  transform: translate(-50%, -50%) scale(0); /* Initially hidden */
+}
+
+/* --- Main Container for Locomotive Scroll --- */
+main {
+  /* This is the scrollable container for Locomotive Scroll */
+  background-color: #f7f7f7;
+}
+
+/* --- Navigation --- */
+nav {
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+#nav-left {
+  height: 82px;
+  overflow: hidden;
+}
+
+#nav-left svg {
+  display: block;
+  fill: #000; /* Set a default fill color */
+}
+
+#nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+#nav-right #links a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 20px;
+  text-transform: uppercase;
+}
+
+#icons {
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+
+#nav-right #icons i {
+  font-size: 18px;
+  margin: 0 20px;
+  font-weight: 100;
+}
+
+/* --- Page 1 --- */
+#page1 {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: 0 1vw;
+  padding-top: 20vh;
+}
+
+#page1 h1 {
+  font-size: 14vw;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  font-weight: 900;
+  color: #000;
+  text-align: left;
+}
+
+#video-container {
+  height: 100vh;
+  width: 100%;
+  margin-top: 2vh;
+  position: relative;
+}
+
+#video-container video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+#video-container #play {
+  font-size: 1.5vw;
+  padding: 2.5vw 2vw;
+  font-weight: 800;
+  color: #fff;
+  background-color: #000;
+  position: fixed; /* Use fixed to follow cursor anywhere */
+  z-index: 1;
+  border-radius: 50%;
+  opacity: 0;
+  scale: 0;
+  cursor: pointer;
+  pointer-events: none; /* So it doesn't block mouseenter/leave on video */
+  transform: translate(-50%, -50%);
+}
+
+/* --- Page 2 --- */
+#page2 {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3vw 1vw;
+  gap: 1vw;
+}
+
+#page2 .elem {
+  height: 100%;
+  width: 32%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page2 .elem .box {
+  height: 60px;
+  width: 70%;
+  border-radius: 50px;
+  position: absolute;
+  z-index: 9;
+  background-color: #f9a825; /* Updated color */
+  transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#page2 .elem .box:hover {
+  height: 50%;
+}
+
+#page2 .elem img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  scale: 1.1; /* Slightly zoomed in for effect */
+}
+
+/* --- Page 3 --- */
+#page3 {
+  min-height: 120vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 2vw;
+}
+
+#page3 .child {
+  height: auto;
+  width: 38vw;
+  position: relative;
+  padding: 2vh 0.5vw;
+  transition: all 0.4s ease;
+}
+
+/* CORRECTED: Standard CSS hover */
+#page3 .child:hover {
+  transform: scale(1.05);
+}
+
+.child img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* --- Footer --- */
+footer {
+  background: #111;
+  color: #e0e0e0;
+  padding: 5vw 8vw;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #444;
+}
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+.footer-col h4 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+.footer-logo svg {
+  width: 150px;
+  height: auto;
+  fill: #fff; /* Make footer logo white */
+}
+.footer-col ul {
+  list-style: none;
+}
+.footer-col ul li {
+  margin-bottom: 1rem;
+}
+.footer-col ul li a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-col ul li a:hover {
+  color: #f9a825;
+}
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.social-links a {
+  color: #a0a0a0;
+  font-size: 1.5rem;
+  transition: color 0.3s, transform 0.3s;
+}
+.social-links a:hover {
+  color: #f9a825;
+  transform: scale(1.1);
+}
+.copyright {
+  text-align: center;
+  padding-top: 2rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* --- Responsive Code --- */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* --- Responsive Code --- */
+/* CORRECTED: Media query syntax */
+@media (max-width: 660px) {
+  nav {
+    padding: 15px;
+  }
+
+  #nav-left svg {
+    height: 60px; /* Scale down the logo */
+  }
+
+  #nav-right #links {
+    display: none; /* Hide links on mobile */
+  }
+
+  #nav-right #icons {
+    margin-top: 0;
+  }
+
+  #nav-right #icons i {
+    margin: 0 10px;
+  }
+
+  #page1 {
+    min-height: 70vh;
+    padding: 0 3vw;
+    padding-top: 25vh;
+  }
+
+  #page1 h1 {
+    font-size: 15.5vw;
+    letter-spacing: -3px;
+  }
+
+  #video-container {
+    height: 50vh;
+  }
+
+  #video-container #play {
+    font-size: 4.5vw;
+    padding: 9.5vw 7vw;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    scale: 1;
+    position: absolute; /* Absolute on mobile, not fixed */
+  }
+
+  #page2 {
+    flex-direction: column;
+  }
+
+  #page2 .elem {
+    width: 100%;
+    margin-bottom: 3vw;
+  }
+
+  #page3 {
+    padding: 2vw;
+  }
+
+  #page3 .child {
+    width: 88vw;
+    margin-bottom: 5vw;
+  }
+}
